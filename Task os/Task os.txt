@@ -1,0 +1,89 @@
+(Execv)
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/types.h>
+main(int argc,char **argv){
+if(argc==1)
+    printf("its oky\n");
+    exit(1);
+    
+}
+execv(argv[1],&argv[1]);
+printf("sorry...can not that!\n");
+}
+
+*****************************************************
+
+(Fork)
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/types.h>
+
+void forkk()
+{
+    
+    int x = 1;
+    if(fork()==0)
+        printf("child has x = %d\n",++x);
+    else
+        printf("parent has x = %d\n",--x);
+    
+}
+int main()
+{
+    
+    forkk();
+    return 0;
+}
+
+*********************************************************
+
+(Fork & Execv)
+
+
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/types.h>
+int main(int argc,char *argv[])
+{
+    
+    printf("PID of for.c = %d\n", getpid());
+    pid_t d;
+    d = fork();
+    if(d==-1)
+    {
+        
+        printf("There is an error while calling fork()");
+    }
+    if(d==0){
+        printf("We are in the child process\n");
+        printf("calling for.c from child process\n");
+        cgar *args[] = {"Hi","C","Diyar","Os,NULL};
+        ececv("./for",args);
+    }
+    else
+    {
+        
+        printf("We are in the parent process");
+    }
+    return 0;
+}
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
